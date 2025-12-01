@@ -1879,141 +1879,19 @@
       </div>
     </section>
 
-  <section id="faq" class="section-alt">
-  <div class="container">
-    <div class="section-heading fade-up">
-      <div class="pill">FAQ</div>
-      <h2>Frequently Asked<br><span style="color:rgba(255,255,255,0.7);">Questions</span></h2>
-      <p>Your most important questions, answered clearly.</p>
-    </div>
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <div class="pill">FAQ</div>
+          <h2>Frequently Asked<br /><span style="color:rgba(255,255,255,0.7);">Questions</span></h2>
+        </div>
 
-    <div class="faq-static">
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq1">
-        <label class="faq-question" for="faq1">How does the device create water from air?</label>
-        <div class="faq-answer">
-          Our device extracts humidity from the air, condenses it, and purifies it through a 5-stage
-          filtration system. The result: clean, mineralized drinking water produced anywhere.
+        <div id="faq-list">
+          <!-- FAQ items will be injected by JS -->
         </div>
       </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq2">
-        <label class="faq-question" for="faq2">What humidity levels are required?</label>
-        <div class="faq-answer">
-          The device begins generating water from around 30% humidity, with optimal performance between 50–80%.
-          It automatically adapts to local climate conditions.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq3">
-        <label class="faq-question" for="faq3">How often do I need to replace filters?</label>
-        <div class="faq-answer">
-          Filter cassettes should be replaced every 6 months. Your device will notify you when it’s time,
-          and you can subscribe for automatic delivery.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq4">
-        <label class="faq-question" for="faq4">Is the water safe to drink?</label>
-        <div class="faq-answer">
-          Yes — the filtration system removes 99.99% of contaminants and meets international drinking-water
-          standards. Certification (NSF, CE) is currently in process for launch.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq5">
-        <label class="faq-question" for="faq5">When will the device be available?</label>
-        <div class="faq-answer">
-          We are currently in pre-launch development. The first production run is planned for 2028.
-          By pre-ordering, you secure priority delivery.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq6">
-        <label class="faq-question" for="faq6">What happens to donated devices?</label>
-        <div class="faq-answer">
-          Donated units are distributed through our verified NGO network to families in water-scarce regions.
-          You will be able to track the impact transparently through your dashboard.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <input type="checkbox" id="faq7">
-        <label class="faq-question" for="faq7">Does it run fully off-grid?</label>
-        <div class="faq-answer">
-          Yes — it operates on solar and battery power, designed for remote communities and off-grid households.
-          No plumbing or external water source needed.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-  .faq-static {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
-    margin-bottom: 14px;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .faq-item input {
-    display: none;
-  }
-
-  .faq-question {
-    display: block;
-    padding: 16px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    color: rgba(255,255,255,0.85);
-    position: relative;
-  }
-
-  .faq-question::after {
-    content: "⌄";
-    position: absolute;
-    right: 20px;
-    top: 18px;
-    font-size: 18px;
-    color: var(--accent);
-    transition: transform 0.2s ease;
-  }
-
-  .faq-item input:checked + .faq-question::after {
-    transform: rotate(180deg);
-  }
-
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    color: rgba(255,255,255,0.75);
-    font-size: 14px;
-    line-height: 1.5;
-    transition: max-height 0.25s ease, padding 0.25s ease;
-  }
-
-  .faq-item input:checked ~ .faq-answer {
-    max-height: 500px;
-    padding: 12px 20px 20px;
-  }
-</style>
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="section-alt">
@@ -2187,6 +2065,71 @@
       fadeEls.forEach((el) => observer.observe(el));
 
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Build FAQ items
+      const faqData = [
+        {
+          q: "When will the GollGlobal device be available?",
+          a: "We are preparing for a full public launch in 2028. Pre-orders will open earlier and secure priority delivery once production begins."
+        },
+        {
+          q: "How much water can the device produce each day?",
+          a: "Our compact atmospheric water generator produces 10–15 liters of clean drinking water per day under typical humidity and temperature conditions."
+        },
+        {
+          q: "Does the device work in low humidity environments?",
+          a: "Yes. The system is engineered to operate from around 30% humidity and above. Optimal performance occurs between 50–80% humidity. Smart controls automatically adjust energy usage to match environmental conditions."
+        },
+        {
+          q: "What maintenance does the device require?",
+          a: "Maintenance is minimal. The filter cassette should be replaced roughly every 6 months, and the battery every 5 years. Both are quick, tool-free replacements. The device will remind you automatically when service is due."
+        },
+        {
+          q: "Is the water safe to drink?",
+          a: "Absolutely. Every drop passes through a multi-stage purification system including filtration, ultrafiltration and UV treatment. The system is designed to meet and exceed WHO drinking water standards."
+        },
+        {
+          q: "How does the Buy-One-Give-One model work?",
+          a: "For every device sold, a portion of the revenue funds a donated unit that is distributed through our NGO partners to families in water-scarce regions. You will later be able to track your impact through our dashboard."
+        },
+        {
+          q: "How can I get involved before launch?",
+          a: "If you're an investor, NGO, or potential distributor, please reach out through the contact form. Private supporters can join our newsletter to receive updates on pilots, pre-orders, and the 2028 launch."
+        }
+      ];
+
+      const faqList = document.getElementById("faq-list");
+      faqData.forEach((item, idx) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "faq-item fade-up" + (idx === 0 ? " open" : "");
+
+        const headerEl = document.createElement("div");
+        headerEl.className = "faq-header";
+
+        const qSpan = document.createElement("span");
+        qSpan.className = "faq-question";
+        qSpan.textContent = item.q;
+
+        const toggle = document.createElement("span");
+        toggle.className = "faq-toggle";
+        toggle.textContent = "⌄";
+
+        headerEl.appendChild(qSpan);
+        headerEl.appendChild(toggle);
+
+        const answer = document.createElement("div");
+        answer.className = "faq-answer";
+        answer.textContent = item.a;
+
+        wrapper.appendChild(headerEl);
+        wrapper.appendChild(answer);
+        faqList.appendChild(wrapper);
+
+        headerEl.addEventListener("click", () => {
+          wrapper.classList.toggle("open");
+        });
+      });
+    });
 
     function copyReferral() {
       const input = document.getElementById("ref-link");
