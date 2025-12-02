@@ -1,1690 +1,1792 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <title>GollGlobal – Wasser aus Luft. Für alle.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="GollGlobal entwickelt einen kompakten Atmospheric Water Generator (AWG), der aus Luft sauberes Trinkwasser erzeugen soll – mit Buy-One-Give-One-Wirkung."
-  />
+  <head>
+    <meta charset="UTF-8" />
+    <title>GollGlobal – Wasser aus Luft. Für alle.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="GollGlobal entwickelt einen kompakten Atmospheric Water Generator (AWG), der aus Luft sauberes Trinkwasser erzeugen soll – für Familien, NGOs und Projekte."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="gollglobal-logo.png.PNG"
+    />
 
-  <style>
-    :root {
-      --bg: #020617;
-      --bg-alt: #020816;
-      --bg-card: #020617;
-      --accent: #22d3ee;
-      --accent-soft: rgba(56, 189, 248, 0.16);
-      --accent-strong: #22d3ee;
-      --accent-dark: #0891b2;
-      --accent-gradient: linear-gradient(135deg, #22d3ee, #22c55e);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --radius-lg: 28px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
-    }
+    <!-- Font -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+    </style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background:
-        radial-gradient(circle at top left, #0f172a, #020617 55%),
-        radial-gradient(circle at bottom right, #020617, #000000 70%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    main {
-      min-height: 100vh;
-    }
-
-    /* Layout */
-
-    .page-shell {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 80px;
-    }
-
-    section {
-      padding: 48px 0;
-    }
-
-    @media (min-width: 900px) {
-      section {
-        padding: 72px 0;
+    <!-- Styles -->
+    <style>
+      :root {
+        --bg: #050914;
+        --bg-alt: #091221;
+        --accent: #00e0c6;
+        --accent-soft: rgba(0, 224, 198, 0.15);
+        --accent-strong: #00c8ff;
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.68);
+        --border-subtle: rgba(255, 255, 255, 0.09);
+        --card-bg: rgba(8, 17, 32, 0.98);
+        --radius-lg: 26px;
+        --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.75);
       }
-    }
 
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 32px;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-strong);
-      background: rgba(34, 211, 238, 0.06);
-      border: 1px solid rgba(34, 211, 238, 0.22);
-      margin-bottom: 16px;
-    }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top left, #012b3d 0, #050914 40%)
+          fixed;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    .section-title {
-      font-size: clamp(24px, 3vw, 30px);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
+      body {
+        min-height: 100vh;
+        background-attachment: fixed;
+        scroll-behavior: smooth;
+      }
 
-    .section-lead {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    /* Fade-up animation */
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+      .page-wrap {
+        position: relative;
+        z-index: 0;
+      }
 
-    .fade-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      /* Layout */
 
-    /* Header & Navigation */
+      .section {
+        padding: 72px 16px;
+      }
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: linear-gradient(
-        180deg,
-        rgba(2, 6, 23, 0.98),
-        rgba(2, 6, 23, 0.96)
-      );
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
+      .section-alt {
+        padding: 72px 16px;
+        background: radial-gradient(circle at top left, #04142a 0, #050914 60%);
+      }
 
-    .header-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+      .section-divider-top {
+        height: 1px;
+        width: 100%;
+        margin: 0 auto 40px;
+        max-width: 1120px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.24) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        opacity: 0.4;
+      }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
 
-    .brand-logo {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #22d3ee, #0f172a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
+      .section-heading {
+        max-width: 720px;
+        margin-bottom: 32px;
+      }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+      .section-heading h2 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.6;
+      }
 
-    .brand-name {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+      .section-footnote {
+        margin-top: 18px;
+        font-size: 13px;
+        opacity: 0.7;
+      }
 
-    .brand-tagline {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .header-cta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: var(--radius-pill);
-      font-size: 13px;
-      font-weight: 600;
-      background-image: var(--accent-gradient);
-      color: #0f172a;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(34, 211, 238, 0.45);
-      white-space: nowrap;
-    }
-
-    .btn-primary span:last-child {
-      font-size: 16px;
-      margin-top: -1px;
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 18px 40px rgba(34, 211, 238, 0.6);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: var(--radius-pill);
-      padding: 8px 14px;
-      font-size: 13px;
-      color: var(--muted);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), #020617);
-      cursor: pointer;
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(148, 163, 184, 0.8);
-      color: #e5e7eb;
-    }
-
-    /* Burger */
-
-    .burger {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background: radial-gradient(
-        circle at top,
-        rgba(15, 23, 42, 1),
-        rgba(15, 23, 42, 0.96)
-      );
-    }
-
-    .burger-lines {
-      width: 16px;
-      height: 12px;
-      position: relative;
-    }
-
-    .burger-lines span {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      transform-origin: center;
-      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease,
-        bottom 0.2s ease;
-    }
-
-    .burger-lines span:nth-child(1) {
-      top: 0;
-    }
-
-    .burger-lines span:nth-child(2) {
-      top: 5px;
-    }
-
-    .burger-lines span:nth-child(3) {
-      bottom: 0;
-    }
-
-    .burger.is-open .burger-lines span:nth-child(1) {
-      top: 5px;
-      transform: rotate(45deg);
-    }
-
-    .burger.is-open .burger-lines span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .burger.is-open .burger-lines span:nth-child(3) {
-      bottom: 5px;
-      transform: rotate(-45deg);
-    }
-
-    /* Nav overlay */
-
-    .nav-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      background: radial-gradient(
-          circle at top,
-          rgba(34, 211, 238, 0.12),
-          transparent 45%
-        ),
-        linear-gradient(160deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.99));
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-10px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 80px;
-    }
-
-    .nav-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .nav-panel {
-      width: 100%;
-      max-width: 420px;
-      padding: 24px 18px 32px;
-      border-radius: 24px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, #0b1120, #020617);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .nav-panel-title {
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .nav-panel-sub {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .nav-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .nav-list a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: radial-gradient(
-        circle at top left,
-        rgba(15, 23, 42, 0.9),
-        rgba(15, 23, 42, 0.98)
-      );
-      font-size: 14px;
-      color: #e5e7eb;
-    }
-
-    .nav-list a span:last-child {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* Hero */
-
-    #start {
-      padding-top: 40px;
-      padding-bottom: 56px;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 28px;
-    }
-
-    @media (min-width: 960px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
+      .pill {
+        display: inline-flex;
         align-items: center;
-        gap: 40px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
       }
-    }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
+      /* Header / Navigation */
 
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      font-size: 11px;
-      color: var(--muted);
-    }
+      header.site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        backdrop-filter: blur(14px);
+        background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.2), transparent)
+          ,rgba(5, 9, 20, 0.92);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
 
-    .hero-title {
-      font-size: clamp(32px, 5vw, 42px);
-      line-height: 1.05;
-      margin-bottom: 14px;
-    }
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
 
-    .hero-title span.highlight {
-      color: var(--accent-strong);
-    }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-    .hero-lead {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 22px;
-    }
+      .nav-logo {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: radial-gradient(circle at top, #00e0c6, #003344);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+      }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
+      .nav-logo img {
+        width: 24px;
+        height: 24px;
+        object-fit: cover;
+      }
 
-    .hero-meta {
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+      .nav-title-block {
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+      }
 
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+      .nav-title-block strong {
+        font-size: 15px;
+      }
 
-    .hero-meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-    .hero-device-shell {
-      border-radius: 40px;
-      padding: 16px;
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.3), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.14), #020617);
-      border: 1px solid rgba(148, 163, 184, 0.32);
-      box-shadow: var(--shadow-soft);
-      cursor: pointer;
-      position: relative;
-    }
+      .btn-solid {
+        border-radius: 999px;
+        padding: 8px 18px;
+        border: none;
+        background: linear-gradient(135deg, #00e0c6, #00c8ff);
+        color: #02101f;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 14px 40px rgba(0, 224, 198, 0.42);
+        cursor: pointer;
+        white-space: nowrap;
+      }
 
-    .hero-device-shell::after {
-      content: "Tippen/Klicken, um geplante Preise zu sehen";
-      position: absolute;
-      bottom: 16px;
-      right: 24px;
-      font-size: 11px;
-      color: rgba(15, 23, 42, 0.9);
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(248, 250, 252, 0.92);
-    }
+      .btn-solid span {
+        white-space: nowrap;
+      }
 
-    .hero-device-glow {
-      border-radius: 32px;
-      padding: 3px;
-      background: radial-gradient(circle at top left, #22d3ee, #38bdf8);
-    }
+      .btn-ghost {
+        border-radius: 999px;
+        padding: 7px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        background: transparent;
+        color: var(--text);
+        font-size: 13px;
+        cursor: pointer;
+      }
 
-    .hero-device-card {
-      border-radius: 30px;
-      padding: 18px 18px 16px;
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: #e5e7eb;
-      display: grid;
-      gap: 14px;
-    }
+      .nav-links {
+        display: none;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--muted);
+      }
 
-    .hero-device-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      font-size: 13px;
-    }
+      .nav-links a {
+        padding: 4px 0;
+      }
 
-    .hero-device-tag {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+      .nav-menu-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(5, 9, 20, 0.8);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
 
-    .hero-device-main {
-      border-radius: 26px;
-      overflow: hidden;
-      background: linear-gradient(160deg, #e0f2fe, #f9fafb);
-    }
+      .nav-menu-btn span,
+      .nav-menu-btn span::before,
+      .nav-menu-btn span::after {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: #fff;
+        position: relative;
+        transition: transform 0.22s ease, opacity 0.22s ease;
+      }
 
-    .hero-device-image {
-      width: 100%;
-      height: 220px;
-      object-fit: contain;
-    }
+      .nav-menu-btn span::before,
+      .nav-menu-btn span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+      }
 
-    .hero-device-stats {
-      display: grid;
-      gap: 6px;
-      font-size: 11.5px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
+      .nav-menu-btn span::before {
+        top: -5px;
+      }
 
-    .hero-device-price {
-      font-size: 14px;
-      font-weight: 600;
-    }
+      .nav-menu-btn span::after {
+        top: 5px;
+      }
 
-    .hero-device-footnote {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <div class="brand-logo">
-          <img src="gollglobal-logo.png.PNG" alt="GollGlobal Logo" />
-        </div>
-        <div class="brand-text">
-          <div class="brand-name">GollGlobal</div>
-          <div class="brand-tagline">Wasser aus Luft. Für alle.</div>
-        </div>
-      </div>
+      body.nav-open .nav-menu-btn span {
+        transform: rotate(45deg);
+      }
 
-      <div class="header-cta">
-        <a href="#kontakt" class="btn-primary">
-          <span>Early Access sichern</span>
-          <span>↗</span>
-        </a>
-        <button class="burger" id="burger-btn" aria-label="Menü öffnen">
-          <div class="burger-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-      </div>
-    </div>
-  </header>
+      body.nav-open .nav-menu-btn span::before {
+        transform: rotate(-90deg);
+        top: 0;
+      }
 
-  <!-- Vollbild-Menü -->
-  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
-    <nav class="nav-panel">
-      <div class="nav-panel-title">Navigation</div>
-      <div class="nav-panel-sub">
-        Springe direkt zu den wichtigsten Bereichen der Seite.
-      </div>
-      <ul class="nav-list">
-        <li><a href="#start"><span>Start</span><span>Überblick</span></a></li>
-        <li><a href="#problem"><span>Problem</span><span>Wasserknappheit</span></a></li>
-        <li><a href="#loesung"><span>Lösung</span><span>AWG-System</span></a></li>
-        <li><a href="#wirkung"><span>Wirkung & NGOs</span><span>Buy-One-Give-One</span></a></li>
-        <li><a href="#preise"><span>Preise</span><span>Gerät & Zubehör</span></a></li>
-        <li><a href="#faq"><span>FAQ</span><span>Fragen & Antworten</span></a></li>
-        <li><a href="#kontakt"><span>Kontakt</span><span>NGOs & Partner</span></a></li>
-      </ul>
-      <button class="btn-ghost" id="nav-close-btn">
-        Menü schließen
-      </button>
-    </nav>
-  </div>
+      body.nav-open .nav-menu-btn span::after {
+        opacity: 0;
+      }
 
-  <main class="page-shell">
-    <!-- Hero -->
-    <section id="start" class="fade-up">
-      <div class="hero-grid">
-        <div>
-          <div class="hero-badges">
-            <div class="hero-pill">
-              <span class="hero-meta-dot"></span>
-              <span>Prototypenphase · Launch ab 2028 geplant</span>
+      /* Mobile overlay nav */
+
+      .mobile-nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 35;
+        background: radial-gradient(circle at top left, #032842 0, #050914 55%);
+        display: none;
+        padding: 80px 24px 32px;
+      }
+
+      body.nav-open .mobile-nav-overlay {
+        display: block;
+      }
+
+      .mobile-nav-inner {
+        max-width: 420px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .mobile-nav-inner h2 {
+        margin: 0 0 4px;
+        font-size: 26px;
+      }
+
+      .mobile-nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      .mobile-nav-list a {
+        padding: 6px 0;
+        color: var(--muted);
+      }
+
+      .mobile-nav-footer {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Hero */
+
+      #start.section {
+        padding-top: 60px;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 32px;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .hero-badge {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        background: rgba(6, 35, 57, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: var(--muted);
+      }
+
+      .hero-title {
+        margin: 0 0 12px;
+        font-size: 30px;
+        line-height: 1.18;
+      }
+
+      .hero-title span {
+        color: var(--accent-strong);
+      }
+
+      .hero-text {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 420px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .hero-meta-dot::before {
+        content: "• ";
+      }
+
+      /* Hero device preview */
+
+      .hero-device-shell {
+        border-radius: var(--radius-lg);
+        padding: 16px;
+        background: radial-gradient(circle at top left, rgba(0, 224, 198, 0.12), transparent)
+            ,
+          rgba(7, 17, 34, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        cursor: pointer;
+      }
+
+      .hero-device-shell:hover {
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9);
+      }
+
+      .hero-device-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+
+      .hero-device-top strong {
+        display: block;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.8;
+      }
+
+      .hero-device-top span {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .hero-device-tag {
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .hero-device-main {
+        display: grid;
+        gap: 10px;
+      }
+
+      .hero-device-visual {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #e4f5ff, #fdfdfd);
+      }
+
+      .hero-device-visual img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .hero-device-stats {
+        font-size: 12px;
+        color: var(--muted);
+        display: grid;
+        gap: 4px;
+      }
+
+      .hero-device-price {
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+
+      .hero-device-footnote {
+        font-size: 11px;
+        opacity: 0.7;
+      }
+
+      /* Problem / Lösung / Mission */
+
+      .feature-grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .feature-card {
+        border-radius: var(--radius-lg);
+        padding: 22px 20px 24px;
+        background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.12), transparent)
+            ,
+          rgba(7, 17, 34, 0.96);
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .feature-card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .feature-card p {
+        margin: 0 0 8px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .feature-list {
+        margin: 8px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .feature-list li + li {
+        margin-top: 4px;
+      }
+
+      /* Impact */
+
+      .impact-grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .impact-card {
+        border-radius: 24px;
+        padding: 24px 24px 26px;
+        background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.16), transparent)
+            ,
+          rgba(7, 16, 32, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .impact-card h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .impact-number {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        margin: 4px 0 16px;
+      }
+
+      .impact-text {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .impact-note {
+        margin-top: 8px;
+        font-size: 13px;
+        opacity: 0.75;
+      }
+
+      .referral-box {
+        margin-top: 16px;
+      }
+
+      .referral-box label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 6px;
+        opacity: 0.85;
+      }
+
+      .referral-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .input {
+        border-radius: 999px;
+        padding: 9px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(4, 10, 22, 0.82);
+        color: var(--text);
+        font-size: 14px;
+        width: 100%;
+      }
+
+      .referral-feedback {
+        margin-top: 6px;
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      /* Pricing */
+
+      .pricing-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .pricing-card {
+        border-radius: 26px;
+        padding: 20px 20px 22px;
+        background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.14), transparent)
+            ,
+          rgba(7, 16, 32, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: var(--shadow-soft);
+        cursor: pointer;
+        transition: transform 0.17s ease, box-shadow 0.17s ease,
+          border-color 0.17s ease;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.95);
+        border-color: rgba(0, 224, 198, 0.7);
+      }
+
+      .pricing-card-header {
+        margin-bottom: 10px;
+      }
+
+      .pricing-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+      }
+
+      .pricing-card-header h3 {
+        margin: 4px 0 2px;
+        font-size: 19px;
+      }
+
+      .pricing-subtitle {
+        margin: 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .pricing-media {
+        margin-top: 14px;
+        border-radius: 22px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #e5f4ff, #fbfcff);
+      }
+
+      .pricing-media img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .pricing-price {
+        margin: 14px 0 4px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .pricing-footnote {
+        margin: 0 0 10px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .pricing-toggle {
+        margin-top: 4px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .pricing-details {
+        display: none;
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .pricing-card.show-details .pricing-details {
+        display: block;
+      }
+
+      .pricing-card.show-details .pricing-toggle {
+        opacity: 0.6;
+      }
+
+      .pricing-list {
+        margin: 0 0 8px;
+        padding-left: 18px;
+      }
+
+      .pricing-list li + li {
+        margin-top: 3px;
+      }
+
+      .pricing-note {
+        font-size: 13px;
+        opacity: 0.85;
+      }
+
+      /* FAQ */
+
+      #faq {
+        scroll-margin-top: 90px;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .faq-item {
+        border-radius: 20px;
+        padding: 14px 16px;
+        background: rgba(8, 17, 32, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .faq-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        cursor: pointer;
+      }
+
+      .faq-question {
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .faq-toggle {
+        font-size: 20px;
+        line-height: 1;
+        opacity: 0.7;
+      }
+
+      .faq-answer {
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--muted);
+        display: none;
+      }
+
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+
+      /* Kontakt */
+
+      #kontakt {
+        scroll-margin-top: 90px;
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 26px;
+      }
+
+      .contact-card {
+        border-radius: 24px;
+        padding: 22px 20px 24px;
+        background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.16), transparent)
+            ,
+          rgba(7, 16, 32, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .contact-card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .contact-meta {
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-form label {
+        font-size: 13px;
+        margin-bottom: 3px;
+        display: block;
+      }
+
+      .contact-row {
+        display: grid;
+        gap: 10px;
+      }
+
+      textarea.input {
+        border-radius: 18px;
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      footer {
+        padding: 24px 16px 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(3, 8, 17, 0.96);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      footer .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Animations */
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-up.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Media Queries */
+
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+        }
+
+        .nav-menu-btn {
+          display: none;
+        }
+
+        .hero-grid {
+          grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+          align-items: stretch;
+          gap: 40px;
+        }
+
+        .feature-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .impact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .pricing-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-grid {
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .section,
+        .section-alt {
+          padding: 88px 16px;
+        }
+
+        .hero-title {
+          font-size: 36px;
+        }
+
+        .section-heading h2 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <header class="site-header">
+        <div class="nav-bar">
+          <div class="nav-left">
+            <div class="nav-logo">
+              <img src="gollglobal-logo.png.PNG" alt="GollGlobal Logo" />
             </div>
-            <div class="hero-pill">
-              <span class="hero-meta-dot"></span>
-              <span>Buy-One-Give-One · Gerät & Wirkung</span>
+            <div class="nav-title-block">
+              <strong>GollGlobal</strong>
+              <span>Wasser aus Luft. Für alle.</span>
             </div>
           </div>
 
-          <h1 class="hero-title">
-            Wasser aus <span class="highlight">Luft</span> – für Familien und Projekte.
-          </h1>
-
-          <p class="hero-lead">
-            GollGlobal entwickelt einen kompakten Atmospheric Water Generator (AWG), der aus Umgebungsluft
-            rund 10–15&nbsp;Liter Trinkwasser pro Tag erzeugen soll – gedacht für Haushalte, NGOs und Projekte
-            in wasserarmen Regionen.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#preise" class="btn-primary">
-              <span>Geplante Preise ansehen</span>
-              <span>→</span>
+          <div class="nav-actions">
+            <nav class="nav-links">
+              <a href="#start">Start</a>
+              <a href="#problem">Problem</a>
+              <a href="#loesung">Lösung</a>
+              <a href="#wirkung">Wirkung</a>
+              <a href="#preise">Preise</a>
+              <a href="#faq">FAQ</a>
+              <a href="#kontakt">Kontakt</a>
+            </nav>
+            <a href="#kontakt" class="btn-solid">
+              <span>Early Access sichern ↗</span>
             </a>
-            <a href="#wirkung" class="btn-ghost">
-              <span>Wirkung & NGOs ansehen</span>
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <span>
-              <span class="hero-meta-dot"></span>
-              Entwicklung in Europa, NGO-Piloten ab 2026 geplant
-            </span>
-            <span>
-              <span class="hero-meta-dot" style="background:#f97316;"></span>
-              Noch nicht verfügbar – Gerät befindet sich in Planung &amp; Entwicklung
-            </span>
+            <button
+              type="button"
+              class="nav-menu-btn"
+              id="nav-toggle"
+              aria-label="Menü öffnen"
+            >
+              <span></span>
+            </button>
           </div>
         </div>
+      </header>
 
-        <!-- Klickbare Preview-Karte, scrollt zu Preise -->
-        <div id="hero-preview" class="hero-device-shell" aria-label="Zum Preisbereich springen">
-          <div class="hero-device-glow">
-            <div class="hero-device-card">
+      <div class="mobile-nav-overlay" id="mobile-nav">
+        <div class="mobile-nav-inner">
+          <div>
+            <div class="pill">Navigation</div>
+            <h2>GollGlobal Übersicht</h2>
+            <p class="hero-text">
+              Wähle einen Abschnitt, um mehr über Gerät, Wirkung und geplante
+              Preise zu erfahren.
+            </p>
+          </div>
+          <ul class="mobile-nav-list">
+            <li><a href="#start" data-nav-close>Start</a></li>
+            <li><a href="#problem" data-nav-close>Problem</a></li>
+            <li><a href="#loesung" data-nav-close>Lösung &amp; Gerät</a></li>
+            <li><a href="#wirkung" data-nav-close>Wirkung &amp; NGOs</a></li>
+            <li><a href="#preise" data-nav-close>Preise*</a></li>
+            <li><a href="#faq" data-nav-close>Häufige Fragen</a></li>
+            <li><a href="#kontakt" data-nav-close>Kontakt &amp; Updates</a></li>
+          </ul>
+          <div class="mobile-nav-footer">
+            Prototypenphase&nbsp;· Launch ab 2028 geplant&nbsp;·
+            Buy-One-Give-One-Modell in Vorbereitung.
+          </div>
+        </div>
+      </div>
+            <!-- Hero -->
+      <section id="start" class="section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="fade-up">
+              <div class="hero-badges">
+                <div class="hero-badge">Prototypenphase · Launch ab 2028 geplant</div>
+                <div class="hero-badge">Buy-One-Give-One · Gerät &amp; Wirkung</div>
+              </div>
+
+              <h1 class="hero-title">
+                Wasser aus <span>Luft</span> – für Familien und Projekte.
+              </h1>
+              <p class="hero-text">
+                GollGlobal entwickelt einen kompakten Atmospheric Water
+                Generator (AWG), der aus Umgebungsluft sauberes Trinkwasser
+                erzeugen soll – mobil, energieeffizient und gedacht für
+                Familien, NGOs und Projekte in wasserarmen Regionen.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#preise" class="btn-solid">
+                  <span>Geplante Preise ansehen →</span>
+                </a>
+                <a href="#wirkung" class="btn-ghost">
+                  Wirkung &amp; NGOs ansehen
+                </a>
+              </div>
+
+              <div class="hero-meta">
+                <span class="hero-meta-dot">
+                  Entwicklung in Europa, NGO-Piloten ab 2026 geplant.
+                </span>
+                <span class="hero-meta-dot">
+                  Noch nicht verfügbar – Gerät befindet sich in Planung &
+                  Entwicklung.
+                </span>
+              </div>
+            </div>
+
+            <div
+              class="hero-device-shell fade-up"
+              id="hero-device-card"
+              aria-label="Zum Preisbereich springen"
+            >
               <div class="hero-device-top">
                 <div>
-                  <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted);">
-                    Kompaktes Gerät für eine 4–5-köpfige Familie
-                  </div>
-                  <div style="font-weight:600; margin-top:4px;">
-                    Atmospheric Water Generator
-                  </div>
+                  <strong>Komaktes Gerät für eine 5-köpfige Familie</strong>
+                  <span>Atmospheric Water Generator</span>
                 </div>
                 <div class="hero-device-tag">Prototyp geplant</div>
               </div>
 
               <div class="hero-device-main">
+                <div class="hero-device-visual">
+                  <img
+                    src="watair-device.png.PNG"
+                    alt="GollGlobal AWG – Geräte-Preview"
+                  />
+                </div>
+                <div class="hero-device-stats">
+                  <div class="hero-device-price">
+                    1.399&nbsp;€ Preorder* (Zielwert)
+                  </div>
+                  <div>Für Haushalte und Projekte, die ihre Trinkwasserversorgung resilienter machen wollen.</div>
+                  <div>Netzbetrieb oder Kombination mit Solarsystemen vorgesehen.</div>
+                  <div class="hero-device-footnote">
+                    * Werte sind Planungsstände und können sich während der
+                    Entwicklung noch ändern.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+            <!-- Problem -->
+      <section id="problem" class="section-alt">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Problem</div>
+            <h2>Wasserknappheit trifft Millionen – selbst dort, wo Infrastruktur existiert.</h2>
+            <p>
+              Viele Regionen kämpfen mit unsicheren Wasserquellen, schlechter
+              Qualität oder Ausfällen der Versorgung. Brunnen versiegen,
+              Leitungen sind marode, und Wasser muss oft über lange Strecken
+              transportiert werden.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card fade-up">
+              <h3>Unzuverlässige Versorgung</h3>
+              <p>
+                Haushalte und Projekte können sich nicht darauf verlassen, dass
+                Wasser jeden Tag verfügbar ist – gerade in Trockenzeiten.
+              </p>
+              <ul class="feature-list">
+                <li>Regelmäßige Ausfälle und niedriger Druck.</li>
+                <li>Starke saisonale Schwankungen.</li>
+                <li>Abhängigkeit von einzelnen Brunnen oder Tankwagen.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card fade-up">
+              <h3>Unsichere Qualität</h3>
+              <p>
+                Selbst dort, wo Wasser verfügbar ist, entspricht es oft nicht
+                den Qualitätsstandards für Trinkwasser.
+              </p>
+              <ul class="feature-list">
+                <li>Verunreinigungen durch Leitungen oder Lagerung.</li>
+                <li>Zusätzliche Filterung vor Ort notwendig.</li>
+                <li>Hohe Kosten für Wasser in Flaschen.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card fade-up">
+              <h3>Komplexe Infrastruktur</h3>
+              <p>
+                Klassische Wasserprojekte brauchen viel Infrastruktur,
+                Genehmigungen und lange Planungszeiten.
+              </p>
+              <ul class="feature-list">
+                <li>Hoher Aufwand für Bau &amp; Wartung.</li>
+                <li>Schwierige Skalierung in abgelegenen Gebieten.</li>
+                <li>Hohe Abhängigkeit von einzelnen Betreiberstrukturen.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lösung / Gerät -->
+      <section id="loesung" class="section">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Lösung</div>
+            <h2>Wasser aus Luft – kompakt, mobil und für Familien gedacht.</h2>
+            <p>
+              Unser geplanter AWG soll aus Umgebungsluft Trinkwasser erzeugen
+              – mit mehrstufiger Filtration, Akku-Option und Vorbereitung für
+              Solarsysteme. Ziel ist ein Gerät, das wie ein Haushaltsgerät
+              funktioniert, aber in Alltags- und Projektsituationen echte
+              Resilienz schafft.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card fade-up">
+              <h3>Kompaktes Hauptgerät</h3>
+              <p>
+                Ein AWG für eine 4–5-köpfige Familie – handgepäckähnliche
+                Größe, für Haushalte und Projekte konzipiert.
+              </p>
+              <ul class="feature-list">
+                <li>Ziel: 10–15&nbsp;l Trinkwasser pro Tag (Planungswert).</li>
+                <li>Design für netz- oder solarbasierte Stromversorgung.</li>
+                <li>Mobil einsetzbar, z. B. bei Umzügen oder Projekten.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card fade-up">
+              <h3>Mehrstufige Filtration</h3>
+              <p>
+                Geplante Filterkassette mit mehreren Stufen, inkl. Aktivkohle
+                und UV/UF-Behandlung, um eine hohe Trinkwasserqualität
+                zu erreichen.
+              </p>
+              <ul class="feature-list">
+                <li>Komplett tauschbare Filterkassette („ein Teil rein/raus“).</li>
+                <li>Rücknahme &amp; Recycling der verwendeten Kassetten.</li>
+                <li>Optionales Abo-Modell für planbare Wartung.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card fade-up">
+              <h3>Energie &amp; Off-Grid-Optionen</h3>
+              <p>
+                Geplante Akku-Module ermöglichen den Einsatz in Regionen mit
+                instabiler Stromversorgung oder kombiniert mit Solaranlagen.
+              </p>
+              <ul class="feature-list">
+                <li>Standard-Akku für mobilen oder Notfallbetrieb.</li>
+                <li>Zusatz-Akkus für längere Laufzeiten &amp; Projekte.</li>
+                <li>Vorb. auf Kombination mit Solarspeichern.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+            <!-- Mission / Wer wir sind -->
+      <section id="mission" class="section-alt">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Mission</div>
+            <h2>Wer wir sind – und warum wir GollGlobal bauen.</h2>
+            <p>
+              Hinter GollGlobal steht die Idee, Zugang zu sauberem Trinkwasser
+              zu demokratisieren – mit Technik, die einfach funktioniert, klar
+              kommuniziert wird und eine sichtbare soziale Wirkung entfaltet.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card fade-up">
+              <h3>Produkt-First Ansatz</h3>
+              <p>
+                Wir entwickeln das Gerät gemeinsam mit Expert:innen, NGOs und
+                Nutzer:innen – mit Fokus auf Zuverlässigkeit statt
+                „Hype-Prototypen“.
+              </p>
+            </article>
+            <article class="feature-card fade-up">
+              <h3>Transparente Wirkung</h3>
+              <p>
+                Jede Einheit soll in einem späteren Dashboard nachvollziehbar
+                sein – inklusive gespendeter Geräte und Wartung.
+              </p>
+            </article>
+            <article class="feature-card fade-up">
+              <h3>Langfristige Perspektive</h3>
+              <p>
+                Unser Ziel ist kein kurzfristiger Exit, sondern der Aufbau eines
+                nachhaltigen Unternehmens mit globaler Wirkung.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buy-One-Give-One -->
+      <section id="modell" class="section">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Buy-One-Give-One</div>
+            <h2>Ein Gerät für dich – ein Gerät für eine Familie ohne sicheren Zugang.</h2>
+            <p>
+              Für jedes verkaufte Gerät soll ein weiteres Gerät für
+              wasserarme Regionen finanziert werden – über Partner-NGOs, die
+              Verteilung, Schulung und Wartung vor Ort übernehmen.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card fade-up">
+              <h3>Klare Aufteilung</h3>
+              <p>
+                Käufer:innen bezahlen das Gerät für ihren eigenen Haushalt oder
+                ihr Projekt – ein Teil der Marge fließt in die Finanzierung
+                gespendeter Geräte.
+              </p>
+            </article>
+            <article class="feature-card fade-up">
+              <h3>NGOs als starke Partner</h3>
+              <p>
+                Statt überall eigene Strukturen aufzubauen, arbeiten wir mit
+                NGOs zusammen, die bereits vor Ort sind und Menschen kennen,
+                die am meisten profitieren.
+              </p>
+            </article>
+            <article class="feature-card fade-up">
+              <h3>Impact Network Marketing (geplant)</h3>
+              <p>
+                Perspektivisch soll ein Empfehlungs-System zeigen, wie viele
+                zusätzliche Geräte und Spenden über deine Empfehlungen
+                mitfinanziert wurden – sichtbar in einem Impact-Dashboard.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+            <!-- Wirkung & Referral -->
+      <section id="wirkung" class="section-alt">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Wirkung</div>
+            <h2>Jedes Gerät schreibt eine zweite Geschichte.</h2>
+            <p>
+              Unser Ziel: Jede verkaufte Einheit, jede gespendete Einheit und
+              jede Wartung soll transparent nachvollziehbar sein – für
+              Kund:innen, NGOs und Partner. Keine Blackbox, sondern sichtbare
+              Wirkung.
+            </p>
+          </div>
+
+          <div class="impact-grid">
+            <article class="impact-card fade-up">
+              <h3>Geplanter Impact-Zähler</h3>
+              <p class="impact-number">000&nbsp;000</p>
+              <p class="impact-text">
+                In der späteren Produktiv-Version soll ein öffentlicher Zähler
+                zeigen, wie viele Menschen durch ausgelieferte Geräte Zugang zu
+                sauberem Trinkwasser erhalten haben.
+              </p>
+              <p class="impact-note">
+                Für die aktuelle Demoseite ist dies ein Platzhalter. Die finale
+                Logik wird gemeinsam mit Pilotprojekten und Daten aus
+                Partner-NGOs entwickelt.
+              </p>
+            </article>
+
+            <article class="impact-card fade-up">
+              <h3>Referral-Link &amp; Impact-Dashboard (Demo)</h3>
+              <p class="impact-text">
+                Langfristig planen wir ein Impact-Dashboard, in dem du sehen
+                kannst, wie viele Käufe und Spenden über deine Empfehlungen
+                zustande kamen – übersetzt in „Menschen mit Wasser“ statt nur
+                in Euro-Werte.
+              </p>
+
+              <div class="referral-box">
+                <label for="referral-link">Demo-Referral-Link</label>
+                <div class="referral-row">
+                  <input
+                    id="referral-link"
+                    type="text"
+                    class="input"
+                    readonly
+                    value="https://gollglobal.com/?ref=demo"
+                  />
+                  <button
+                    type="button"
+                    id="copy-referral"
+                    class="btn-solid"
+                    style="padding-inline: 14px;"
+                  >
+                    Link kopieren
+                  </button>
+                </div>
+                <p
+                  id="referral-feedback"
+                  class="referral-feedback"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <p class="impact-note">
+                Geplant ist, dass Käufer:innen optional einen persönlichen
+                Referral-Code erhalten. Darüber lassen sich später Impact-Stories
+                und Wasserzugänge transparent nachverfolgen.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+            <!-- Preise -->
+      <section id="preise" class="section">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Preise*</div>
+            <h2>Geplantes Preismodell – Gerät, Filter &amp; Energie.</h2>
+            <p>
+              Die folgenden Werte sind Zielpreise für die erste Serie und
+              können sich während der Entwicklung noch ändern. Details sind
+              Planungsstände und keine verbindlichen Zusagen.
+            </p>
+            <p style="font-size: 13px; opacity: 0.7; margin-top: 6px;">
+              Tipp: Tippen/Klicken auf eine Karte, um Details zu sehen.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Hauptgerät -->
+            <article class="pricing-card js-pricing-card fade-up">
+              <header class="pricing-card-header">
+                <span class="pricing-tag">Hauptgerät</span>
+                <h3>GollGlobal AWG</h3>
+                <p class="pricing-subtitle">
+                  Kompakter Atmospheric Water Generator
+                </p>
+              </header>
+
+              <div class="pricing-media">
                 <img
                   src="watair-device.png.PNG"
-                  alt="GollGlobal AWG – Geräte-Preview"
-                  class="hero-device-image"
+                  alt="GollGlobal AWG – kompaktes Hauptgerät"
                 />
               </div>
 
-              <div class="hero-device-stats">
-                <div class="hero-device-price">
-                  1.399&nbsp;€ Preorder* (Zielpreis)
-                </div>
-                <div>
-                  * Werte sind Planungsstände und können sich während der Entwicklung und Pilotprojekte noch ändern.
-                </div>
-                <div>
-                  • Ziel: 10–15&nbsp;L Trinkwasser/Tag (Planungswert)  
-                  • Für 4–5-köpfige Familie gedacht  
-                  • Netzbetrieb oder Kombination mit Solarsystemen
-                </div>
-              </div>
+              <p class="pricing-price">1.399&nbsp;€ Preorder*</p>
+              <p class="pricing-footnote">
+                Zielpreis für frühe Unterstützer:innen der Erstserie.
+              </p>
 
-              <div class="hero-device-footnote">
-                Tippen/Klicken, um zum Preisbereich zu springen.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-        <!-- Problem -->
-    <section id="problem" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Problem</div>
-        <h2 class="section-title">Wasserknappheit trifft zuerst Familien und lokale Projekte.</h2>
-        <p class="section-lead">
-          In vielen Regionen ist Leitungswasser keine Selbstverständlichkeit. Brunnen fallen aus,
-          Transport ist teuer oder unsicher – und genau in diesen Situationen sind Familien, Schulen
-          und lokale Projekte auf verlässliche, eigene Lösungen angewiesen.
-        </p>
-      </div>
-
-      <div style="display:grid; gap:16px; font-size:14px; color:var(--muted); max-width:760px;">
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.85);">
-          <strong style="color:#e5e7eb;">Unzuverlässige Infrastruktur</strong><br />
-          Öffentliche Netze sind oft überlastet, schlecht gewartet oder fallen in Krisen zuerst aus – gerade in
-          ländlichen Regionen.
-        </div>
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.85);">
-          <strong style="color:#e5e7eb;">Abhängigkeit von Lieferketten</strong><br />
-          Wasser in Kanistern oder Flaschen muss geliefert, bezahlt und verteilt werden – jede Störung in der
-          Lieferkette trifft die Schwächsten zuerst.
-        </div>
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.85);">
-          <strong style="color:#e5e7eb;">Projektinseln statt System</strong><br />
-          Viele Hilfsprojekte sind zeitlich begrenzt. Nach Projektende fehlt ein System, das langfristig Wasser
-          sichert und Wartung mitdenkt.
-        </div>
-      </div>
-    </section>
-
-    <!-- Lösung -->
-    <section id="loesung" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Lösung</div>
-        <h2 class="section-title">Kompakter Atmospheric Water Generator mit Service-System.</h2>
-        <p class="section-lead">
-          Unser Ziel ist ein tragbares Gerät, das aus Umgebungsluft Trinkwasser erzeugt – kombiniert mit einem
-          Filter- und Service-System, das Wartung planbar macht und NGOs entlastet.
-        </p>
-      </div>
-
-      <div style="display:grid; gap:16px; grid-template-columns:minmax(0,1.1fr); max-width:760px;">
-        <div style="padding:16px 18px; border-radius:22px; border:1px solid var(--border-subtle); background:radial-gradient(circle at top left,#0b1120,#020617);">
-          <strong style="color:#e5e7eb; font-size:14px;">Wasser aus Luft</strong>
-          <p style="margin-top:8px; font-size:14px; color:var(--muted); line-height:1.6;">
-            Der AWG soll Luft ansaugen, Feuchtigkeit kondensieren und das Wasser über mehrere Filterstufen
-            (z.&nbsp;B. Aktivkohle, Membran, UV/UF) führen. Ziel: Trinkwasserqualität, die für Haushalte und Projekte
-            geeignet ist.
-          </p>
-        </div>
-
-        <div style="padding:16px 18px; border-radius:22px; border:1px solid var(--border-subtle); background:radial-gradient(circle at top left,#0b1120,#020617);">
-          <strong style="color:#e5e7eb; font-size:14px;">Off-Grid vorbereitet</strong>
-          <p style="margin-top:8px; font-size:14px; color:var(--muted); line-height:1.6;">
-            Das Gerät soll wie ein Haushaltsgerät an der Steckdose laufen – gleichzeitig aber für externe
-            Solarsysteme und Batteriepacks vorbereitet sein. Für Projekte und NGOs planen wir Setups, in denen das
-            Gerät vor allem nachts läuft und tagsüber per Solar geladen wird.
-          </p>
-        </div>
-
-        <div style="padding:16px 18px; border-radius:22px; border:1px solid var(--border-subtle); background:radial-gradient(circle at top left,#0b1120,#020617);">
-          <strong style="color:#e5e7eb; font-size:14px;">Filterkassette & Service-Abo</strong>
-          <p style="margin-top:8px; font-size:14px; color:var(--muted); line-height:1.6;">
-            Herzstück ist eine wechselbare Filterkassette mit Recycling-Konzept. Optionales Service-Abo: Filter
-            alle sechs Monate automatisch, inkl. Rücknahme und Aufarbeitung der alten Kassetten.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission / Wer wir sind -->
-    <section id="mission" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Wer wir sind</div>
-        <h2 class="section-title">Impact-getrieben, technisch pragmatisch, langfristig gedacht.</h2>
-        <p class="section-lead">
-          GollGlobal ist noch im Aufbau. Unser Ziel ist kein schneller Exit, sondern ein System, mit dem
-          Haushalte, NGOs und Partner langfristig zuverlässig Wasser erzeugen können – transparent und
-          nachvollziehbar.
-        </p>
-      </div>
-
-      <div style="display:grid; gap:16px; max-width:760px; font-size:14px; color:var(--muted);">
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.9);">
-          <strong style="color:#e5e7eb;">Produkt-First</strong><br />
-          Der Fokus liegt auf einem robusten Gerät, das im Alltag funktioniert – bevor große Kampagnen oder
-          Skalierung starten.
-        </div>
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.9);">
-          <strong style="color:#e5e7eb;">NGOs als Partner</strong><br />
-          Wir wollen mit bestehenden Strukturen arbeiten statt sie zu ersetzen. NGOs bringen lokale Erfahrung,
-          Logistik und Vertrauen mit.
-        </div>
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.9);">
-          <strong style="color:#e5e7eb;">Transparenz als Standard</strong><br />
-          Später soll jede verkaufte Einheit, jede gespendete Einheit und jede Wartung im Impact-Dashboard
-          nachvollziehbar sein – für Kund:innen und Partner.
-        </div>
-      </div>
-    </section>
-        <!-- Buy-One-Give-One -->
-    <section id="buyone" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Buy-One-Give-One</div>
-        <h2 class="section-title">Ein Gerät für dich – ein Gerät für eine Familie ohne Zugang.</h2>
-        <p class="section-lead">
-          Für jedes verkaufte Seriengerät soll eine zusätzliche Einheit in ein NGO-Projekt fließen. Dort
-          kümmern sich Partner vor Ort um Auswahl der Familien, Installation und Wartung.
-        </p>
-      </div>
-
-      <div style="display:grid; gap:16px; max-width:760px; font-size:14px; color:var(--muted);">
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.9);">
-          <strong style="color:#e5e7eb;">Partner übernehmen Verteilung</strong><br />
-          NGOs organisieren Transport, Auswahl der Haushalte und Schulung vor Ort. So bleiben Strukturen schlank
-          und lokal verankert.
-        </div>
-        <div style="padding:14px 16px; border-radius:18px; border:1px solid var(--border-subtle); background:rgba(15,23,42,0.9);">
-          <strong style="color:#e5e7eb;">Transparente Wirkung statt Versprechen</strong><br />
-          Langfristig soll ein öffentlicher Zähler zeigen, wie viele Menschen über eure Geräte Trinkwasser
-          erhalten – pro Projekt nachverfolgbar.
-        </div>
-      </div>
-    </section>
-
-    <!-- Wirkung & Impact Dashboard / Referral -->
-    <section id="wirkung" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Wirkung</div>
-        <h2 class="section-title">Jedes Gerät schreibt eine zweite Geschichte.</h2>
-        <p class="section-lead">
-          Unser Ziel ist ein Impact-Dashboard, das zeigt, welche Projekte und Haushalte durch eure Käufe
-          mitversorgt werden – inklusive Referral-Logik, wenn ihr GollGlobal weiterempfehlt.
-        </p>
-      </div>
-
-      <div
-        style="
-          display:grid;
-          gap:20px;
-          grid-template-columns:minmax(0,1.05fr);
-          max-width:820px;
-        "
-      >
-        <!-- Impact Counter -->
-        <div
-          style="
-            border-radius:28px;
-            border:1px solid var(--border-subtle);
-            background:radial-gradient(circle at top left,#0b1120,#020617);
-            padding:18px 18px 16px;
-          "
-        >
-          <div style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">
-            Geplanter Impact-Zähler
-          </div>
-          <div
-            style="
-              font-size:32px;
-              font-variant-numeric:tabular-nums;
-              letter-spacing:0.35em;
-              margin-bottom:8px;
-            "
-          >
-            000&nbsp;000
-          </div>
-          <p style="font-size:14px; color:var(--muted); line-height:1.6;">
-            Der Zähler ist in dieser Demosite ein Platzhalter. In der späteren Produktivversion sollen echte
-            NGO-Daten und ausgelieferte Geräte in einen öffentlichen Counter einfließen.
-          </p>
-        </div>
-
-        <!-- Referral / Impact-Link -->
-        <div
-          style="
-            border-radius:28px;
-            border:1px solid var(--border-subtle);
-            background:radial-gradient(circle at top,#020617,#020617);
-            padding:18px 18px 18px;
-          "
-        >
-          <div style="font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;">
-            Impact-Link (Demo)
-          </div>
-          <p style="font-size:14px; color:var(--muted); margin-bottom:12px; line-height:1.6;">
-            Später soll jede:r Käufer:in einen persönlichen Impact-Link erhalten. Darüber lassen sich
-            Empfehlungen tracken – das Dashboard zeigt an, wie viele Menschen dadurch zusätzlich Zugang zu
-            Trinkwasser erhalten.
-          </p>
-
-          <div
-            style="
-              display:flex;
-              flex-wrap:wrap;
-              gap:10px;
-              align-items:center;
-            "
-          >
-            <input
-              id="referral-input"
-              type="text"
-              readonly
-              value="https://gollglobal.com/dein-impact-link"
-              style="
-                flex:1;
-                min-width:0;
-                padding:8px 10px;
-                border-radius:14px;
-                border:1px solid rgba(148,163,184,0.6);
-                background:rgba(15,23,42,0.9);
-                color:#e5e7eb;
-                font-size:13px;
-              "
-            />
-            <button
-              type="button"
-              id="referral-copy-btn"
-              class="btn-ghost"
-              style="white-space:nowrap;"
-            >
-              Link kopieren
-            </button>
-          </div>
-
-          <div
-            id="referral-copy-status"
-            style="margin-top:8px; font-size:12px; color:var(--muted);"
-          >
-            Demo-Funktion – der Inhalt wird in die Zwischenablage kopiert.
-          </div>
-        </div>
-      </div>
-    </section>
-        <!-- Preise / Produkte -->
-    <section id="preise" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Preise (Planungsstand)</div>
-        <h2 class="section-title">Geplantes Preismodell für Gerät & Zubehör.</h2>
-        <p class="section-lead">
-          Alle Beträge sind Zielwerte und können sich während Entwicklung, Zertifizierung und Pilotprojekten
-          noch ändern. Finale Preise werden vor Serienstart klar kommuniziert.
-        </p>
-      </div>
-
-      <style>
-        .pricing-grid {
-          display: grid;
-          gap: 18px;
-        }
-
-        @media (min-width: 900px) {
-          .pricing-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        .pricing-card {
-          perspective: 1400px;
-        }
-
-        .pricing-card-inner {
-          position: relative;
-          border-radius: var(--radius-lg);
-          background: radial-gradient(circle at top left, #1a2e4f, #020617 60%);
-          box-shadow: var(--shadow-soft);
-          border: 1px solid rgba(148, 163, 184, 0.45);
-          transform-style: preserve-3d;
-          transition: transform 0.5s ease, box-shadow 0.3s ease,
-            border-color 0.3s ease;
-          cursor: pointer;
-          min-height: 420px;
-        }
-
-        .pricing-card:hover .pricing-card-inner {
-          box-shadow: 0 24px 60px rgba(15, 23, 42, 0.95);
-          border-color: rgba(148, 163, 184, 0.9);
-        }
-
-        .pricing-card-face {
-          position: absolute;
-          inset: 0;
-          padding: 18px 18px 16px;
-          backface-visibility: hidden;
-          border-radius: inherit;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .pricing-card-front {
-          background: radial-gradient(circle at top left, #020617, #020617);
-        }
-
-        .pricing-card-back {
-          background: radial-gradient(circle at top left, #020617, #020617);
-          transform: rotateY(180deg);
-        }
-
-        .pricing-card.flipped .pricing-card-inner {
-          transform: rotateY(180deg);
-        }
-
-        .pricing-type {
-          font-size: 12px;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--muted);
-          margin-bottom: 4px;
-        }
-
-        .pricing-title {
-          font-size: 18px;
-          font-weight: 600;
-          margin-bottom: 2px;
-        }
-
-        .pricing-subtitle {
-          font-size: 13px;
-          color: var(--muted);
-          margin-bottom: 12px;
-        }
-
-        .pricing-image-shell {
-          border-radius: 22px;
-          background: linear-gradient(160deg, #e0f2fe, #f9fafb);
-          padding: 16px 16px 10px;
-          margin-bottom: 12px;
-          flex-shrink: 0;
-        }
-
-        .pricing-image-shell img {
-          width: 100%;
-          height: 220px;
-          object-fit: contain;
-        }
-
-        .pricing-price {
-          font-size: 17px;
-          font-weight: 600;
-          margin-bottom: 4px;
-        }
-
-        .pricing-footnote {
-          font-size: 12px;
-          color: var(--muted);
-          margin-bottom: 10px;
-        }
-
-        .pricing-bullets {
-          list-style: none;
-          font-size: 13px;
-          color: var(--muted);
-          display: grid;
-          gap: 6px;
-          margin-top: 6px;
-        }
-
-        .pricing-bullets li::before {
-          content: "• ";
-          color: var(--accent-strong);
-        }
-
-        .pricing-back-label {
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.14em;
-          color: var(--muted);
-          margin-bottom: 6px;
-        }
-
-        .pricing-back-text {
-          font-size: 13px;
-          color: var(--muted);
-          line-height: 1.6;
-        }
-
-        .pricing-flip-hint {
-          margin-top: auto;
-          font-size: 12px;
-          color: var(--muted);
-          text-align: right;
-        }
-      </style>
-
-      <div class="pricing-grid">
-        <!-- Gerät -->
-        <article class="pricing-card" data-card="awg">
-          <div class="pricing-card-inner">
-            <!-- Front -->
-            <div class="pricing-card-face pricing-card-front">
-              <div class="pricing-type">Hauptgerät</div>
-              <h3 class="pricing-title">GollGlobal AWG</h3>
-              <div class="pricing-subtitle">Kompakter Atmospheric Water Generator</div>
-
-              <div class="pricing-image-shell">
-                <img src="watair-device.png.PNG" alt="GollGlobal AWG Gerät" />
-              </div>
-
-              <div class="pricing-price">1.399&nbsp;€ Preorder*</div>
-              <div class="pricing-footnote">
-                Zielpreis für frühe Unterstützer:innen der ersten Serie.
-              </div>
-
-              <ul class="pricing-bullets">
-                <li>Ziel: 10–15&nbsp;L Trinkwasser/Tag (Planungswert)</li>
-                <li>Für eine 4–5-köpfige Familie gedacht</li>
-                <li>Netzbetrieb oder Kombination mit Solarsystemen</li>
-              </ul>
-
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um Details &amp; Wirkungsmodell zu sehen.
-              </div>
-            </div>
-
-            <!-- Back -->
-            <div class="pricing-card-face pricing-card-back">
-              <div class="pricing-back-label">Was ist geplant?</div>
-              <h3 class="pricing-title">GollGlobal AWG – Details</h3>
-              <div class="pricing-back-text">
-                <p>
-                  Das Hauptgerät soll robust, wartungsarm und transportfähig sein. Geplant ist eine integrierte
-                  Wasseraufbereitung mit mehrstufiger Filtration und UV/UF-Behandlung.
-                </p>
-                <p style="margin-top:8px;">
-                  Für jedes Seriengerät ist im Buy-One-Give-One-Modell eine weitere Einheit für NGO-Projekte
-                  vorgesehen – inklusive Filterkassetten nach definierten Wartungsintervallen.
-                </p>
-                <p style="margin-top:8px; font-size:12px; color:var(--muted);">
-                  * Preisinformation ohne Gewähr, final erst nach erfolgreicher Entwicklung &amp; Zertifizierung.
-                </p>
-              </div>
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um zur Vorderseite zurückzuwechseln.
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Filterkassette -->
-        <article class="pricing-card" data-card="filter">
-          <div class="pricing-card-inner">
-            <div class="pricing-card-face pricing-card-front">
-              <div class="pricing-type">Filtration</div>
-              <h3 class="pricing-title">Filterkassette</h3>
-              <div class="pricing-subtitle">Geplante Mehrstufen-Filtereinheit</div>
-
-              <div class="pricing-image-shell">
-                <img src="filter-cassette.png.PNG" alt="Filterkassette" />
-              </div>
-
-              <div class="pricing-price">ca. 79&nbsp;€ je Kassette*</div>
-              <div class="pricing-footnote">
-                Austausch alle ~6 Monate vorgesehen (abhängig von Nutzung &amp; Wasserqualität).
-              </div>
-
-              <ul class="pricing-bullets">
-                <li>Kombination mehrerer Filterstufen</li>
-                <li>Recycling-Konzept mit Rücknahme alter Kassetten</li>
-                <li>Optional: automatischer Versand im Abo</li>
-              </ul>
-
-              <div class="pricing-flip-hint">
-                Tippen/Klicken für Details zum Abo-Modell.
-              </div>
-            </div>
-
-            <div class="pricing-card-face pricing-card-back">
-              <div class="pricing-back-label">Filter &amp; Service</div>
-              <h3 class="pricing-title">Filterkassette &amp; Abo-Option</h3>
-              <div class="pricing-back-text">
-                <p>
-                  Die Filterkassette ist das Herzstück der Wasseraufbereitung. Geplant sind mehrere
-                  kombinierte Filterstufen, die je nach Einsatzregion angepasst werden können.
-                </p>
-                <p style="margin-top:8px;">
-                  Im geplanten Service-Abo erhältst du automatisch alle sechs Monate eine neue Kassette.
-                  Die alte wird zur Aufarbeitung und zum Recycling zurückgenommen – ein Teil davon fließt
-                  direkt in NGO-Projekte.
-                </p>
-                <p style="margin-top:8px; font-size:12px;">
-                  * Preisziel, abhängig von Materialkosten, Produktion und Logistik.
-                </p>
-              </div>
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um zur Vorderseite zurückzukehren.
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="pricing-grid" style="margin-top:18px;">
-        <!-- Standard-Akku -->
-        <article class="pricing-card" data-card="battery-standard">
-          <div class="pricing-card-inner">
-            <div class="pricing-card-face pricing-card-front">
-              <div class="pricing-type">Energie</div>
-              <h3 class="pricing-title">Standard-Akku</h3>
-              <div class="pricing-subtitle">Batteriepack für mobiles Setup</div>
-
-              <div class="pricing-image-shell">
-                <img src="battery-pack.png.PNG" alt="Standard-Akku" />
-              </div>
-
-              <div class="pricing-price">ca. 149&nbsp;€*</div>
-              <div class="pricing-footnote">
-                Für Haushalte mit gelegentlichem Off-Grid-Betrieb vorgesehen.
-              </div>
-
-              <ul class="pricing-bullets">
-                <li>Geplant für Kombi-Betrieb mit Solarsystemen</li>
-                <li>Tragbar, stapelbar, für Haushalte und Projekte</li>
-                <li>Optional im Service-Paket kombinierbar</li>
-              </ul>
-
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um geplante Nutzungsszenarien zu sehen.
-              </div>
-            </div>
-
-            <div class="pricing-card-face pricing-card-back">
-              <div class="pricing-back-label">Energie-Setup</div>
-              <h3 class="pricing-title">Standard-Akku – Szenarien</h3>
-              <div class="pricing-back-text">
-                <p>
-                  Der Standard-Akku ist als Basiskomponente für mobile oder instabile Netze gedacht – zum Beispiel
-                  für Haushalte mit häufigen Stromausfällen oder kleinere Projekte.
-                </p>
-                <p style="margin-top:8px;">
-                  In NGO-Setups planen wir Kombinationen aus mehreren Akkus und Solarsystemen, damit Geräte vor allem
-                  nachts laufen können, wenn die Luftfeuchtigkeit höher ist.
-                </p>
-                <p style="margin-top:8px; font-size:12px;">
-                  * Preisangabe ist ein Zielwert und kann sich je nach Lieferkette noch ändern.
-                </p>
-              </div>
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um zur Vorderseite zu wechseln.
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Zusatz-Akku -->
-        <article class="pricing-card" data-card="battery-plus">
-          <div class="pricing-card-inner">
-            <div class="pricing-card-face pricing-card-front">
-              <div class="pricing-type">Energie</div>
-              <h3 class="pricing-title">Zusatz-Akku</h3>
-              <div class="pricing-subtitle">Schlankes Batteriepack für mehr Reserve</div>
-
-              <div class="pricing-image-shell">
-                <img src="battery-slim-pack.png.jpg" alt="Zusatz-Akku" />
-              </div>
-
-              <div class="pricing-price">ca. 199&nbsp;€*</div>
-              <div class="pricing-footnote">
-                Für Projekte, NGOs oder Haushalte mit höherem Bedarf.
-              </div>
-
-              <ul class="pricing-bullets">
-                <li>Zusätzliche Kapazität für längere Laufzeiten</li>
-                <li>Kombinierbar mit Standard-Akku und Solarsystem</li>
-                <li>Gedacht für NGOs &amp; Projekte mit vielen Nutzern</li>
-              </ul>
-
-              <div class="pricing-flip-hint">
+              <p class="pricing-toggle">
                 Tippen/Klicken, um Details zu sehen.
-              </div>
-            </div>
+              </p>
 
-            <div class="pricing-card-face pricing-card-back">
-              <div class="pricing-back-label">Mehr Reserven</div>
-              <h3 class="pricing-title">Zusatz-Akku – Einsatz</h3>
-              <div class="pricing-back-text">
-                <p>
-                  Der Zusatz-Akku soll dort eingesetzt werden, wo kontinuierlich mehr Wasser benötigt wird –
-                  z.&nbsp;B. in Projekten mit Schulen, kleineren Gesundheitsstationen oder größeren Familien.
-                </p>
-                <p style="margin-top:8px;">
-                  In Kombination mit dem Standard-Akku kann so ein robustes Energie-Setup entstehen, das auch bei
-                  längeren Bewölkungsphasen durchhält.
-                </p>
-                <p style="margin-top:8px; font-size:12px;">
-                  * Preisziel, abhängig von Zellpreisen, Gehäuse und Zertifizierung.
+              <div class="pricing-details">
+                <ul class="pricing-list">
+                  <li>Ziel: 10–15&nbsp;l Trinkwasser pro Tag (Planungswert).</li>
+                  <li>Gedacht für eine 4–5-köpfige Familie oder vergleichbare Projekte.</li>
+                  <li>Vorgesehen für Netzbetrieb oder Kombination mit Solarsystemen.</li>
+                </ul>
+                <p class="pricing-note">
+                  Geplante Service-Modelle: DIY-Filterwechsel für Preisbewusste
+                  oder komfortables Abo-Modell mit halbjährlichem Filtertausch
+                  und Akku-Service.
                 </p>
               </div>
-              <div class="pricing-flip-hint">
-                Tippen/Klicken, um zur Vorderseite zurückzugehen.
+            </article>
+
+            <!-- Filterkassette -->
+            <article class="pricing-card js-pricing-card fade-up">
+              <header class="pricing-card-header">
+                <span class="pricing-tag">Filtration</span>
+                <h3>Filterkassette</h3>
+                <p class="pricing-subtitle">Geplante Mehrstufen-Filtereinheit</p>
+              </header>
+
+              <div class="pricing-media">
+                <img
+                  src="filter-cassette.png.PNG"
+                  alt="Filterkassette für das GollGlobal AWG System"
+                />
               </div>
-            </div>
+
+              <p class="pricing-price">ca. 79&nbsp;€ je Kassette*</p>
+              <p class="pricing-footnote">
+                Austausch alle ~6&nbsp;Monate vorgesehen (abhängig von Nutzung &
+                Wasserqualität).
+              </p>
+
+              <p class="pricing-toggle">
+                Tippen/Klicken, um Details zu sehen.
+              </p>
+
+              <div class="pricing-details">
+                <ul class="pricing-list">
+                  <li>Kombination aus Vorfiltern, Aktivkohle und Membran/UV/UF (geplant).</li>
+                  <li>Komplett wechselbare Kassette – kein Hantieren mit losen Medien.</li>
+                  <li>Rücknahme &amp; Recycling der gebrauchten Kassetten vorgesehen.</li>
+                </ul>
+                <p class="pricing-note">
+                  Im Abo-Modell sind Filterkassetten im Preis enthalten, inkl.
+                  Rücknahme und Recycling. Einzelkauf bleibt weiterhin möglich
+                  (DIY-Modell).
+                </p>
+              </div>
+            </article>
+
+            <!-- Standard-Akku -->
+            <article class="pricing-card js-pricing-card fade-up">
+              <header class="pricing-card-header">
+                <span class="pricing-tag">Energie</span>
+                <h3>Standard-Akku</h3>
+                <p class="pricing-subtitle">Batteriepack für mobiles Setup</p>
+              </header>
+
+              <div class="pricing-media">
+                <img
+                  src="battery-pack.png.PNG"
+                  alt="Standard-Akku für das GollGlobal AWG System"
+                />
+              </div>
+
+              <p class="pricing-price">ca. 149&nbsp;€*</p>
+              <p class="pricing-footnote">
+                Für Haushalte mit gelegentlichem Off-Grid-Betrieb vorgesehen.
+              </p>
+
+              <p class="pricing-toggle">
+                Tippen/Klicken, um Details zu sehen.
+              </p>
+
+              <div class="pricing-details">
+                <ul class="pricing-list">
+                  <li>Geplant für den Kombi-Betrieb mit Solarsystemen.</li>
+                  <li>Tragbar, stapelbar, gedacht für Haushalte und kleinere Projekte.</li>
+                </ul>
+                <p class="pricing-note">
+                  Im Service-Abo ist ein geplanter Akkuwechsel nach einigen
+                  Jahren enthalten, um Leistung und Sicherheit zu gewährleisten.
+                </p>
+              </div>
+            </article>
+
+            <!-- Zusatz-Akku -->
+            <article class="pricing-card js-pricing-card fade-up">
+              <header class="pricing-card-header">
+                <span class="pricing-tag">Energie</span>
+                <h3>Zusatz-Akku</h3>
+                <p class="pricing-subtitle">
+                  Schlankes Batteriepack für mehr Reserve
+                </p>
+              </header>
+
+              <div class="pricing-media">
+                <img
+                  src="battery-slim-pack.png.jpg"
+                  alt="Zusatz-Akku für längere Laufzeiten"
+                />
+              </div>
+
+              <p class="pricing-price">ca. 199&nbsp;€*</p>
+              <p class="pricing-footnote">
+                Für Projekte, NGOs oder Haushalte mit höherem Bedarf.
+              </p>
+
+              <p class="pricing-toggle">
+                Tippen/Klicken, um Details zu sehen.
+              </p>
+
+              <div class="pricing-details">
+                <ul class="pricing-list">
+                  <li>Zusätzliche Kapazität für längere Laufzeiten des Geräts.</li>
+                  <li>Kombinierbar mit Standard-Akku und Solarsystem.</li>
+                  <li>Besonders geeignet für NGO-Projekte mit vielen Nutzer:innen.</li>
+                </ul>
+                <p class="pricing-note">
+                  In NGO-Setups können mehrere Akkus pro Gerät vorgesehen
+                  werden, abhängig vom Standort und der Nutzung.
+                </p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-    </section>
-        <!-- FAQ -->
-    <section id="faq" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">FAQ</div>
-        <h2 class="section-title">Häufige Fragen – kurz beantwortet.</h2>
-        <p class="section-lead">
-          Die wichtigsten Fragen zum aktuellen Stand, zum geplanten Gerät und zum Buy-One-Give-One-Modell.
-        </p>
-      </div>
 
-      <style>
-        .faq-list {
-          display: grid;
-          gap: 10px;
-          max-width: 820px;
-        }
-
-        .faq-item {
-          border-radius: 20px;
-          border: 1px solid rgba(148, 163, 184, 0.45);
-          background: radial-gradient(circle at top left, #020617, #020617);
-          overflow: hidden;
-        }
-
-        .faq-header {
-          padding: 12px 16px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          cursor: pointer;
-        }
-
-        .faq-question {
-          font-size: 14px;
-          font-weight: 500;
-        }
-
-        .faq-toggle {
-          width: 22px;
-          height: 22px;
-          border-radius: 999px;
-          border: 1px solid rgba(148, 163, 184, 0.7);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 16px;
-          color: var(--muted);
-        }
-
-        .faq-answer {
-          padding: 0 16px 14px;
-          font-size: 13px;
-          line-height: 1.6;
-          color: var(--muted);
-          display: none;
-        }
-
-        .faq-item.open .faq-answer {
-          display: block;
-        }
-      </style>
-
-      <div class="faq-list">
-        <article class="faq-item open">
-          <div class="faq-header">
-            <div class="faq-question">
-              Wie funktioniert das Buy-One-Give-One-Modell genau?
-            </div>
-            <div class="faq-toggle">+</div>
+          <p class="section-footnote">
+            * Alle Preise sind Zielwerte und können sich während der Entwicklung
+            noch ändern. Finale Preise, Spezifikationen und Modelle werden vor
+            Marktstart transparent kommuniziert.
+          </p>
+        </div>
+      </section>
+            <!-- FAQ -->
+      <section id="faq" class="section-alt">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">FAQ</div>
+            <h2>Häufige Fragen – kurz beantwortet.</h2>
+            <p>
+              Die wichtigsten Fragen zum aktuellen Stand, zum geplanten Gerät
+              und zum Buy-One-Give-One-Modell.
+            </p>
           </div>
-          <div class="faq-answer">
-            Für jedes verkaufte Seriengerät soll eine weitere Einheit in ein NGO-Projekt fließen. Die NGO
-            übernimmt Auswahl der Haushalte, Installation und Wartung vor Ort. In unserem späteren
-            Impact-Dashboard soll nachvollziehbar sein, in welche Projekte dein Gerät indirekt eingeflossen ist.
-          </div>
-        </article>
 
-        <article class="faq-item">
-          <div class="faq-header">
-            <div class="faq-question">
-              Reicht die Wasserproduktion wirklich für eine Familie?
-            </div>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer">
-            Unser Zielwert liegt bei 10–15&nbsp;Litern Trinkwasser pro Tag. Das soll für eine 4–5-köpfige Familie
-            in Kombination mit weiteren Quellen (z.&nbsp;B. Leitungswasser zum Waschen) reichen. In Pilotprojekten
-            werden wir genau testen, für welche Haushaltsgrößen und Klimazonen das System geeignet ist.
-          </div>
-        </article>
+          <div class="faq-list">
+            <article class="faq-item open fade-up">
+              <div class="faq-header">
+                <div class="faq-question">
+                  Wie funktioniert das Buy-One-Give-One-Modell genau?
+                </div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-answer">
+                Für jedes verkaufte Gerät soll ein weiteres Gerät für
+                wasserarme Regionen finanziert werden. Die Verteilung,
+                Schulung und Wartung übernehmen Partner-NGOs vor Ort. Die
+                genaue Quote hängt von den finalen Produktions- und
+                Logistikkosten ab und wird vor Marktstart transparent
+                kommuniziert.
+              </div>
+            </article>
 
-        <article class="faq-item">
-          <div class="faq-header">
-            <div class="faq-question">
-              Wie sicher ist die Wasserqualität?
-            </div>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer">
-            Geplant ist eine mehrstufige Filtereinheit inklusive UV/UF-Behandlung. Ziel ist Trinkwasserqualität
-            nach einschlägigen Standards – die genauen Werte und Zertifizierungen legen wir offen, sobald
-            Prototypen getestet und zertifiziert sind.
-          </div>
-        </article>
+            <article class="faq-item fade-up">
+              <div class="faq-header">
+                <div class="faq-question">
+                  Reicht die Wasserproduktion wirklich für eine Familie?
+                </div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-answer">
+                Unser Zielwert liegt bei 10–15&nbsp;Litern Trinkwasser pro Tag
+                für eine 4–5-köpfige Familie – abhängig von Temperatur,
+                Luftfeuchtigkeit und Nutzungsmuster. Diese Werte werden in
+                Prototypentests und Pilotprojekten überprüft und ggf.
+                angepasst.
+              </div>
+            </article>
 
-        <article class="faq-item">
-          <div class="faq-header">
-            <div class="faq-question">
-              Wie wird das Gerät mit Strom versorgt?
-            </div>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer">
-            Das Gerät soll wie ein Haushaltsgerät an der Steckdose betrieben werden können und gleichzeitig für
-            externe Solarsysteme und Batteriepacks vorbereitet sein. Für NGO-Einsätze planen wir Setups, in denen
-            das Gerät vor allem nachts läuft und tagsüber über Solarsysteme geladen wird.
-          </div>
-        </article>
+            <article class="faq-item fade-up">
+              <div class="faq-header">
+                <div class="faq-question">
+                  Wie sicher ist die Wasserqualität?
+                </div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-answer">
+                Geplant ist eine mehrstufige Filterkassette (z. B. Sediment,
+                Aktivkohle, Membran, UV/UF), die regelmäßig gewechselt wird.
+                Ziel ist Trinkwasserqualität nach gängigen Standards. Die
+                konkreten Filterstufen und Zertifizierungen werden im Verlauf
+                der Entwicklung festgelegt.
+              </div>
+            </article>
 
-        <article class="faq-item">
-          <div class="faq-header">
-            <div class="faq-question">
-              In welchem Entwicklungsstand befindet sich GollGlobal aktuell?
-            </div>
-            <div class="faq-toggle">+</div>
+            <article class="faq-item fade-up">
+              <div class="faq-header">
+                <div class="faq-question">
+                  Wie wird das Gerät mit Strom versorgt?
+                </div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-answer">
+                Das Gerät soll wie ein Haushaltsgerät an der Steckdose
+                betrieben werden können und gleichzeitig für externe Solar- und
+                Batteriesysteme vorbereitet sein. Für NGO-Einsätze planen wir
+                Setups, in denen das Gerät vor allem nachts läuft und der
+                Strom tagsüber über Solarsysteme geladen wird. Konkrete
+                Konfigurationen werden in Pilotprojekten getestet.
+              </div>
+            </article>
+
+            <article class="faq-item fade-up">
+              <div class="faq-header">
+                <div class="faq-question">
+                  In welchem Entwicklungsstand befindet sich GollGlobal aktuell?
+                </div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-answer">
+                Wir befinden uns in der Vorbereitungs- und Konzeptphase. Ziel
+                ist, ab 2026 erste Prototypen zu testen und gemeinsam mit
+                NGOs Pilotprojekte umzusetzen. Ein größerer Launch ist ab 2028
+                geplant – abhängig von Technologie-, Zulassungs- und
+                Finanzierungsschritten.
+              </div>
+            </article>
           </div>
-          <div class="faq-answer">
-            GollGlobal befindet sich in der Planungs- und Vorbereitungsphase. Prototypen, Zertifizierungen und
-            Pilotprojekte mit NGOs sind für die nächsten Jahre geplant. Diese Landingpage dient als
-            Konzept-Preview und zur Kontaktaufnahme mit Interessierten, Partnern und Förder:innen.
+        </div>
+      </section>
+            <!-- Kontakt -->
+      <section id="kontakt" class="section">
+        <div class="section-divider-top"></div>
+        <div class="container">
+          <div class="section-heading fade-up">
+            <div class="pill">Kontakt</div>
+            <h2>Lass uns sprechen – über Wasser, Wirkung und Zusammenarbeit.</h2>
+            <p>
+              Du bist NGO, Investor:in, Förderpartner oder möchtest einfach mehr
+              über GollGlobal erfahren? Schreib uns gern eine Nachricht.
+            </p>
           </div>
-        </article>
-      </div>
-    </section>
-        <!-- Kontakt -->
-    <section id="kontakt" class="fade-up">
-      <div class="section-heading">
-        <div class="section-kicker">Kontakt</div>
-        <h2 class="section-title">Lass uns sprechen – über Wasser, Wirkung und Zusammenarbeit.</h2>
-        <p class="section-lead">
-          Du bist NGO, Impact-Partner:in, Fördergeber:in, Business Angel oder einfach neugierig? Schreib uns
-          einige Zeilen – wir melden uns, sobald es Neuigkeiten zum Projekt gibt.
-        </p>
-      </div>
 
-      <div
-        style="
-          border-radius:28px;
-          border:1px solid var(--border-subtle);
-          background:radial-gradient(circle at top left,#020617,#020617);
-          padding:18px 18px 22px;
-          max-width:760px;
-        "
-      >
-        <form id="contact-form">
-          <div
-            style="
-              display:grid;
-              gap:12px;
-              grid-template-columns:minmax(0,1fr);
-            "
-          >
-            <div>
-              <label for="name" style="font-size:13px; color:#e5e7eb;">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                style="
-                  width:100%;
-                  margin-top:4px;
-                  padding:8px 10px;
-                  border-radius:14px;
-                  border:1px solid rgba(148,163,184,0.7);
-                  background:rgba(15,23,42,0.9);
-                  color:#e5e7eb;
-                  font-size:13px;
-                "
-              />
-            </div>
+          <div class="contact-grid">
+            <article class="contact-card fade-up">
+              <h3>Direkter Kontakt</h3>
+              <p>
+                Am einfachsten erreichst du uns per E-Mail. Wir melden uns, sobald
+                neue Prototypen, Pilotprojekte oder Early-Access-Möglichkeiten
+                konkret werden.
+              </p>
+              <p class="contact-meta">
+                E-Mail:&nbsp;
+                <a href="mailto:info@gollglobal.com">info@gollglobal.com</a>
+              </p>
+            </article>
 
-            <div>
-              <label for="email" style="font-size:13px; color:#e5e7eb;">E-Mail</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                style="
-                  width:100%;
-                  margin-top:4px;
-                  padding:8px 10px;
-                  border-radius:14px;
-                  border:1px solid rgba(148,163,184,0.7);
-                  background:rgba(15,23,42,0.9);
-                  color:#e5e7eb;
-                  font-size:13px;
-                "
-              />
-            </div>
-
-            <div>
-              <label for="type" style="font-size:13px; color:#e5e7eb;">Ich schreibe als …</label>
-              <select
-                id="type"
-                name="type"
-                style="
-                  width:100%;
-                  margin-top:4px;
-                  padding:8px 10px;
-                  border-radius:14px;
-                  border:1px solid rgba(148,163,184,0.7);
-                  background:rgba(15,23,42,0.9);
-                  color:#e5e7eb;
-                  font-size:13px;
-                "
+            <article class="contact-card fade-up">
+              <h3>Interesse vormerken (Demo-Formular)</h3>
+              <form
+                class="contact-form"
+                onsubmit="handleContactSubmit(event)"
               >
-                <option value="ng o">NGO / Projektpartner:in</option>
-                <option value="investor">Business Angel / Investor:in</option>
-                <option value="funding">Fördergeber:in / Stiftung</option>
-                <option value="other">Interessierte Person</option>
-              </select>
-            </div>
+                <div>
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    class="input"
+                    type="text"
+                    placeholder="Dein Name"
+                    required
+                  />
+                </div>
 
-            <div>
-              <label for="message" style="font-size:13px; color:#e5e7eb;">Nachricht</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                required
-                style="
-                  width:100%;
-                  margin-top:4px;
-                  padding:8px 10px;
-                  border-radius:14px;
-                  border:1px solid rgba(148,163,184,0.7);
-                  background:rgba(15,23,42,0.9);
-                  color:#e5e7eb;
-                  font-size:13px;
-                  resize:vertical;
-                "
-              ></textarea>
-            </div>
+                <div class="contact-row">
+                  <div>
+                    <label for="email">E-Mail</label>
+                    <input
+                      id="email"
+                      class="input"
+                      type="email"
+                      placeholder="dein.name@example.org"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="role">Rolle (optional)</label>
+                    <input
+                      id="role"
+                      class="input"
+                      type="text"
+                      placeholder="z. B. NGO, Investor:in, Privat"
+                    />
+                  </div>
+                </div>
 
-            <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-              <button type="submit" class="btn-primary">
-                <span>Nachricht senden (Demo)</span>
-                <span>→</span>
-              </button>
-              <span id="contact-status" style="font-size:12px; color:var(--muted);">
-                Das Formular sendet in dieser Demo keine echten E-Mails, zeigt dir aber eine Bestätigung.
-              </span>
-            </div>
+                <div>
+                  <label for="message">Nachricht (kurz)</label>
+                  <textarea
+                    id="message"
+                    class="input"
+                    placeholder="Wie möchtest du mit GollGlobal in Kontakt kommen?"
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn-solid">
+                  Interesse vormerken
+                </button>
+                <p
+                  id="contact-feedback"
+                  class="referral-feedback"
+                  aria-live="polite"
+                ></p>
+              </form>
+            </article>
           </div>
-        </form>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
 
-    <footer style="padding-top:16px; font-size:12px; color:var(--muted);">
-      <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between;">
-        <span>© <span id="year"></span> GollGlobal – Konzept &amp; Entwicklung.</span>
-        <span>Demo-Landingpage, alle Angaben ohne Gewähr.</span>
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> GollGlobal – Wasser aus Luft. Für alle.</div>
+        <div>Demoseite · Inhalte &amp; Preise sind Planungsstände und können sich ändern.</div>
       </div>
     </footer>
-  </main>
+
     <script>
-    // Jahr
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Burger & Overlay
-    const burger = document.getElementById("burger-btn");
-    const overlay = document.getElementById("nav-overlay");
-    const navClose = document.getElementById("nav-close-btn");
-
-    function closeNav() {
-      overlay.classList.remove("open");
-      burger.classList.remove("is-open");
-      overlay.setAttribute("aria-hidden", "true");
-    }
-
-    burger.addEventListener("click", () => {
-      const isOpen = overlay.classList.toggle("open");
-      burger.classList.toggle("is-open", isOpen);
-      overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
-    });
-
-    navClose.addEventListener("click", closeNav);
-
-    overlay.querySelectorAll(".nav-list a").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").replace("#", "");
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.addEventListener("DOMContentLoaded", () => {
+        // Jahr im Footer
+        const yearSpan = document.getElementById("year");
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
         }
-        closeNav();
-      });
-    });
 
-    // Hero-Preview scrollt zu Preise
-    const heroPreview = document.getElementById("hero-preview");
-    if (heroPreview) {
-      heroPreview.addEventListener("click", () => {
-        const target = document.getElementById("preise");
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Fade-up Animation
+        const fadeEls = document.querySelectorAll(".fade-up");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16 }
+        );
+        fadeEls.forEach((el) => observer.observe(el));
+
+        // Mobile Nav
+        const navToggle = document.getElementById("nav-toggle");
+        const mobileNav = document.getElementById("mobile-nav");
+        const closeLinks = document.querySelectorAll("[data-nav-close]");
+
+        if (navToggle) {
+          navToggle.addEventListener("click", () => {
+            document.body.classList.toggle("nav-open");
+          });
         }
-      });
-    }
 
-    // Fade-up Animation
-    const fadeEls = document.querySelectorAll(".fade-up");
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
+        closeLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            document.body.classList.remove("nav-open");
+          });
+        });
+
+        if (mobileNav) {
+          mobileNav.addEventListener("click", (event) => {
+            if (event.target === mobileNav) {
+              document.body.classList.remove("nav-open");
             }
           });
-        },
-        { threshold: 0.12 }
-      );
-      fadeEls.forEach((el) => observer.observe(el));
-    } else {
-      fadeEls.forEach((el) => el.classList.add("is-visible"));
-    }
-
-    // FAQ-Accordion
-    document.querySelectorAll(".faq-item").forEach((item) => {
-      const header = item.querySelector(".faq-header");
-      header.addEventListener("click", () => {
-        const isOpen = item.classList.contains("open");
-        document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
-        if (!isOpen) item.classList.add("open");
-      });
-    });
-
-    // Pricing-Karten flippen
-    document.querySelectorAll(".pricing-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const isFlipped = card.classList.contains("flipped");
-        document.querySelectorAll(".pricing-card").forEach((c) => c.classList.remove("flipped"));
-        if (!isFlipped) card.classList.add("flipped");
-      });
-    });
-
-    // Referral-Link kopieren
-    const referralInput = document.getElementById("referral-input");
-    const referralCopyBtn = document.getElementById("referral-copy-btn");
-    const referralStatus = document.getElementById("referral-copy-status");
-
-    if (referralCopyBtn && referralInput && referralStatus) {
-      referralCopyBtn.addEventListener("click", async () => {
-        try {
-          referralInput.select();
-          referralInput.setSelectionRange(0, 99999);
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(referralInput.value);
-          } else {
-            document.execCommand("copy");
-          }
-          referralStatus.textContent = "Link wurde in die Zwischenablage kopiert (Demo).";
-        } catch (err) {
-          referralStatus.textContent =
-            "Kopieren nicht möglich – bitte Link manuell markieren und kopieren.";
         }
-      });
-    }
 
-    // Kontaktformular (Fake-Submit)
-    const contactForm = document.getElementById("contact-form");
-    const contactStatus = document.getElementById("contact-status");
+        // Hero Device -> Preise scrollen
+        const heroCard = document.getElementById("hero-device-card");
+        const priceSection = document.getElementById("preise");
+        if (heroCard && priceSection) {
+          heroCard.addEventListener("click", () => {
+            priceSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
 
-    if (contactForm && contactStatus) {
-      contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        contactStatus.textContent =
-          "Vielen Dank! In dieser Demo wird keine echte Nachricht versendet, aber wir würden hier deine Anfrage erhalten.";
+        // Pricing Cards – Details ein-/ausblenden
+        const pricingCards = document.querySelectorAll(".js-pricing-card");
+        pricingCards.forEach((card) => {
+          const toggle = card.querySelector(".pricing-toggle");
+          if (!toggle) return;
+          toggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            card.classList.toggle("show-details");
+          });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach((item) => {
+          const header = item.querySelector(".faq-header");
+          if (!header) return;
+          header.addEventListener("click", () => {
+            item.classList.toggle("open");
+          });
+        });
+
+        // Referral Link kopieren
+        const copyBtn = document.getElementById("copy-referral");
+        const referralInput = document.getElementById("referral-link");
+        const feedback = document.getElementById("referral-feedback");
+
+        if (copyBtn && referralInput) {
+          copyBtn.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(referralInput.value);
+              if (feedback) {
+                feedback.textContent = "Link kopiert ✅";
+              }
+            } catch (err) {
+              if (feedback) {
+                feedback.textContent =
+                  "Konnte den Link nicht automatisch kopieren – bitte manuell markieren.";
+              }
+            }
+          });
+        }
+
+        // Kontaktformular – Demo
+        window.handleContactSubmit = function (event) {
+          event.preventDefault();
+          const feedbackEl = document.getElementById("contact-feedback");
+          if (feedbackEl) {
+            feedbackEl.textContent =
+              "Danke! Dies ist ein Demo-Formular – bitte nutze aktuell die E-Mail-Adresse für echte Anfragen.";
+          }
+        };
       });
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
